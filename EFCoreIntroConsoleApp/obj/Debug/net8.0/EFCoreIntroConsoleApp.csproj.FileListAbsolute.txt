@@ -129,3 +129,4 @@ C:\Users\ASUS\Desktop\Codeacademy\Backend\EFCoreIntroConsoleApp\EFCoreIntroConso
 C:\Users\ASUS\Desktop\Codeacademy\Backend\EFCoreIntroConsoleApp\EFCoreIntroConsoleApp\obj\Debug\net8.0\EFCoreIntroConsoleApp.pdb
 C:\Users\ASUS\Desktop\Codeacademy\Backend\EFCoreIntroConsoleApp\EFCoreIntroConsoleApp\obj\Debug\net8.0\EFCoreIntroConsoleApp.genruntimeconfig.cache
 C:\Users\ASUS\Desktop\Codeacademy\Backend\EFCoreIntroConsoleApp\EFCoreIntroConsoleApp\obj\Debug\net8.0\ref\EFCoreIntroConsoleApp.dll
+C:\Users\ASUS\Desktop\Codeacademy\Backend\EFCoreIntroConsoleApp\EFCoreIntroConsoleApp\obj\Debug\net8.0\EFCoreIntroConsoleApp.sourcelink.json

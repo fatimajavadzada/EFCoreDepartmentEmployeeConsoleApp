@@ -7,7 +7,7 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        AppDbContext context = new AppDbContext();
+        using AppDbContext context = new AppDbContext();
 
         Console.WriteLine("Welcome!");
 
@@ -20,6 +20,8 @@ start:
         Console.WriteLine("6. Show All Employees");
         Console.Write("Enter your choice: ");
         string? choice = Console.ReadLine();
+
+        Console.Clear();
 
         switch (choice)
         {
@@ -104,6 +106,15 @@ employeeSalaryInput:
                     Console.WriteLine("Please enter a valid input...");
                     goto employeeSalaryInput;
                 }
+
+                if (employeeSalary < 0)
+                {
+                    Console.WriteLine("salary cannot be less than 0!");
+                    goto employeeSalaryInput;
+                }
+
+                GetAllDepartments(context);
+
 employeeDepartmentIdInput:
                 Console.Write("Enter department Id of the employee: ");
                 var isParsedEmployeeDepartmentId = int.TryParse(Console.ReadLine(), out int employeeDepartmentId);
@@ -114,7 +125,7 @@ employeeDepartmentIdInput:
                     goto employeeDepartmentIdInput;
                 }
 
-                var isExistedDepartment = context.Departments.Include(d => d.Employees).FirstOrDefault(x => x.Id == employeeDepartmentId);
+                var isExistedDepartment = context.Departments.FirstOrDefault(x => x.Id == employeeDepartmentId);
 
 
                 if (isExistedDepartment == null)
@@ -122,9 +133,14 @@ employeeDepartmentIdInput:
                     Console.WriteLine("Department not found!");
                     goto employeeDepartmentIdInput;
                 }
+                var employeesByDepartmentId = context.Employees.Where(x => x.DepartmentId == employeeDepartmentId).ToList();
 
+                if (employeesByDepartmentId == null)
+                {
+                    Console.WriteLine("Employee not found in department");
+                }
 
-                if (isExistedDepartment.Employees.Count >= isExistedDepartment.Capacity)
+                if (employeesByDepartmentId.Count() >= isExistedDepartment.Capacity)
                 {
                     Console.WriteLine("Department capacity is full! Employee cannot be created!");
                     goto start;
