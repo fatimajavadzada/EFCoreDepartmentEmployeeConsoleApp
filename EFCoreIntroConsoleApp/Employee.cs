@@ -1,0 +1,15 @@
+﻿namespace EFCoreIntroConsoleApp;
+
+public class Employee
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public decimal Salary { get; set; }
+    public int DepartmentId { get; set; }
+    public Department Department { get; set; }
+
+    public override string ToString()
+    {
+        return $"{Id} | {Name} ${Salary} - {Department.Name}";
+    }
+}
